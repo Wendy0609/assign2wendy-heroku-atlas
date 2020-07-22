@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 // Models
-const Desti = require('./models/destinations.js');
+const Destinations = require('./models/destinations.js');
 // Import seed data
 const dbSeed = require('./seeds/destinations.js');
 
@@ -49,11 +49,11 @@ app.get('/', function(request, response){
 
 // Define an endpoint handler for the individual ejs pages
 app.get('/login', function(request, response){
-  response.render('login',{})
+  response.render('login',{title:'login'})
 });
 
   app.get('/register', function(request, response){
-    response.render('register',{})
+    response.render('register',{title:'register'})
   });
 
 // Define an endpoint handler for the individual ejs pages

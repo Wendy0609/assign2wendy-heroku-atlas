@@ -5,7 +5,7 @@ const dotenv = require('dotenv').config();
 const dbSeed = require('./seeds/destinations.js');
 
 // Define model
-const Desti = require('./models/desti.js');
+const Destinations = require('./models/destinations.js');
 
 /*******************************/
 /* Mongoose/MongoDB Connection */
@@ -25,7 +25,7 @@ db.on('error', function(error){
 
 db.once('open', function() {
   console.log('Connected to DB...');
-  Desti.insertMany(dbSeed, function(error, desti) {
+  Destinations.insertMany(dbSeed, function(error, destinations) {
     console.log('Data import completed.')
     mongoose.connection.close();
   });
