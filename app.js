@@ -44,16 +44,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Define an endpoint handler for the home page 
 app.get('/', function(request, response){
-  response.render('index',{})
+  response.render('index',{});
 });
 
 // Define an endpoint handler for the individual ejs pages
 app.get('/login', function(request, response){
-  response.render('login',{title:'login'})
+  response.render('login',{title:'login'});
 });
 
   app.get('/register', function(request, response){
-    response.render('register',{title:'register'})
+    response.render('register',{title:'register'});
   });
 
 // Define an endpoint handler for the individual ejs pages
@@ -71,7 +71,7 @@ app.get('/login', function(request, response){
     // Compile view and respond
     response.render('destinations',destinations);
   });
- 
+});
 
 // Create a JSON (no EJS here) that returns the entire animal JSON
 // This is the endpoint that the frontend gallery script calls (see: ./public/js/app.js).
@@ -96,4 +96,4 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function(){
   console.log(`Listening on port ${PORT}`);
-})
+});
