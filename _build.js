@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
 // Import seed data
-const dbSeed = require('./seeds/Wendy.js');
+const dbSeed = require('./seeds/destinations.js');
 
 // Define model
-const Wendy = require('./models/Wendy.js');
+const destinations = require('./models/destinations.js');
 
 /*******************************/
 /* Mongoose/MongoDB Connection */

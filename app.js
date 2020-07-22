@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 // Models
-const Destinations = require('./models/destinations.js');
+const destinations = require('./models/destinations.js');
 // Import seed data
 const dbSeed = require('./seeds/destinations.js');
 
@@ -61,7 +61,7 @@ app.get('/login', function(request, response){
 
   // model.findOne returns the first object it finds
   // model.find will always return an array, even if it only finds one 
-   Destinations.findOne({'id': request.params.id}, function(error, destinations) {
+  destinations.findOne({'id': request.params.id}, function(error, destinations) {
   
     // Check for IDs that are not in our list
      if (!destinations) {
@@ -79,7 +79,7 @@ app.get('/api/destinations', function(request, response){
 
    response.json(destinations);
 
-  Destinations.find(function(error, destinations) { 
+   destinations.find(function(error, destinations) { 
     response.json(destinations);
   });
 
