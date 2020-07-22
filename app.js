@@ -57,20 +57,20 @@ app.get('/login', function(request, response){
   });
 
 // Define an endpoint handler for the individual ejs pages
-  // app.get('/:id', function(request, response){
+   app.get('/:id', function(request, response){
 
   // model.findOne returns the first object it finds
   // model.find will always return an array, even if it only finds one 
-  //  Destination.findOne({'id': request.params.id}, function(error, destination) {
+   Destinations.findOne({'id': request.params.id}, function(error, destinations) {
   
     // Check for IDs that are not in our list
-    //  if (!destination) {
-    //   return response.send('Invalid ID.');
-    // }
+     if (!destinations) {
+     return response.send('Invalid ID.');
+    }
 
     // Compile view and respond
-  //   response.render('register',destination);
-  // });
+    response.render('destinations',destinations);
+  });
  
 
 // Create a JSON (no EJS here) that returns the entire animal JSON
