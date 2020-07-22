@@ -1,7 +1,7 @@
 
 
 // Gallery pictures for index.html
-const destinations = [
+const Wendy = [
   {
     id:            101,
     title:        'Moose in Banff National Park',
@@ -41,4 +41,4 @@ const destinations = [
   }
 ];
  
-module.exports = destinations;
+module.exports = Wendy;
