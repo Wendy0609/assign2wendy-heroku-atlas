@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 // Models
-const destination = require('./models/destination.js');
+const Desti = require('./models/desti.js');
 // Import seed data
-const dbSeed = require('./seeds/destinations.js');
+// const dbSeed = require('./seeds/destinations.js');
 
 // Hide creds from repo
 const mongoDB = process.env.MONGODB_URL;
@@ -31,11 +31,11 @@ const app = express();
 app.set('view engine', 'ejs');
 
 // cors origin URL - Allow inbound traffic from origin
-corsOptions = {
- origin: "https://dashboard.heroku.com",
- optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-   };
- app.use(cors(corsOptions));
+// corsOptions = {
+//  origin: "https://dashboard.heroku.com",
+//  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+//    };
+//  app.use(cors(corsOptions));
   
 
 // automatically check if requested file is found in /public
@@ -61,15 +61,15 @@ app.get('/login', function(request, response){
 
   // model.findOne returns the first object it finds
   // model.find will always return an array, even if it only finds one 
-  destination.findOne({'id': request.params.id}, function(error, destination) {
+  Desti.findOne({'id': request.params.id}, function(error, desti) {
   
     // Check for IDs that are not in our list
-     if (!destination) {
+     if (!desti) {
      return response.send('Invalid ID.');
     }
 
     // Compile view and respond
-    response.render('destinations',destinations);
+    response.render('register',desti);
   });
 });
 
@@ -79,7 +79,7 @@ app.get('/api/destinations', function(request, response){
 
    response.json(destinations);
 
-   destinations.find(function(error, destinations) { 
+   Desti.find(function(error, destinations) { 
     response.json(destinations);
   });
 
