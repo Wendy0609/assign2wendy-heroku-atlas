@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 // Models
-const Desti = require('./models/desti.js');
+const Desti = require('./models/destination.js');
 // Import seed data
 // const dbSeed = require('./seeds/destinations.js');
 
@@ -64,7 +64,7 @@ app.get('/login', function(request, response){
   Desti.findOne({'id': request.params.id}, function(error, desti) {
   
     // Check for IDs that are not in our list
-     if (!desti) {
+     if (!destination) {
      return response.send('Invalid ID.');
     }
 
