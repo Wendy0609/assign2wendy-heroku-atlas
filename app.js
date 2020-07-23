@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
 // Models
-const Destination = require('./models/destination.js');
+const Gallery = require('./models/destinations.js');
 // Import seed data
 // const dbSeed = require('./seeds/destinations.js');
 
@@ -49,27 +49,27 @@ app.get('/', function(request, response){
 
 // Define an endpoint handler for the individual ejs pages
 app.get('/login', function(request, response){
-  response.render('login',{title:'login'});
+  response.render('login',{});
 });
 
-  app.get('/register', function(request, response){
-    response.render('register',{title:'register'});
-  });
+app.get('/register', function(request, response){
+  response.render('register',{});
+});
 
 // Define an endpoint handler for the individual ejs pages
    app.get('/:id', function(request, response){
 
   // model.findOne returns the first object it finds
   // model.find will always return an array, even if it only finds one 
-  Destination.findOne({'id': request.params.id}, function(error, destination) {
+  Gallery.findOne({'id': request.params.id}, function(error, item) {
   
     //  Check for IDs that are not in our list
-    if (!destination) {
+    if (!item) {
      return response.send('Invalid ID.');
      }
 
     // Compile view and respond
-    response.render('register',destination);
+    response.render('register',item);
    });
  });
 
@@ -77,10 +77,8 @@ app.get('/login', function(request, response){
 // This is the endpoint that the frontend gallery script calls (see: ./public/js/app.js).
 app.get('/api/destinations', function(request, response){
 
-   response.json(destinations);
-
-   Destination.find(function(error, destination) { 
-    response.json(destination);
+    Gallery.find(function(error, item) { 
+    response.json(item);
   });
 
 });
