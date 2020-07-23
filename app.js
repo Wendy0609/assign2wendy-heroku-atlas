@@ -57,27 +57,27 @@ app.get('/login', function(request, response){
   });
 
 // Define an endpoint handler for the individual ejs pages
-  //  app.get('/:id', function(request, response){
+   app.get('/:id', function(request, response){
 
   // model.findOne returns the first object it finds
   // model.find will always return an array, even if it only finds one 
   Destination.findOne({'id': request.params.id}, function(error, destination) {
   
-    // Check for IDs that are not in our list
-    //  if (!destination) {
-    //  return response.send('Invalid ID.');
-    // }
+    //  Check for IDs that are not in our list
+    if (!destination) {
+     return response.send('Invalid ID.');
+     }
 
     // Compile view and respond
-    // response.render('register',destination);
-  // });
-// });
+    response.render('register',destination);
+   });
+ });
 
 // Create a JSON (no EJS here) that returns the entire animal JSON
 // This is the endpoint that the frontend gallery script calls (see: ./public/js/app.js).
 app.get('/api/destinations', function(request, response){
 
-  //  response.json(destinations);
+   response.json(destinations);
 
    Destination.find(function(error, destination) { 
     response.json(destination);
